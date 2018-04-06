@@ -5,7 +5,7 @@ Jeu Mac Gyver Escape
 Jeu dans lequel on doit déplacer Mac Gyver jusqu'à l'arrivée à travers un labyrinthe.
 
 Script Python
-Fichiers : maquette_p3_mc_gyver.py, classes.py, constantes.py, n1, images
+Fichiers : main_p3.py, classes.py, constantes.py, n1 et images
 """
 import pygame
 from pygame.locals import *
@@ -18,23 +18,23 @@ import time
 pygame.init()
 pygame.font.init
 
-#Ouverture de la fenêtre Pygame (carré : largeur = hauteur)
-window = pygame.display.set_mode((cote_fenetre, cote_fenetre))
+# Opening the Pygame window (square: width = height)
+window = pygame.display.set_mode((dimension_window, dimension_window))
 
-#Icone
+# Icone
 icone = pygame.image.load(image_icone)
 pygame.display.set_icon(icone)
-#Titre
-pygame.display.set_caption(titre_fenetre)
+#Title
+pygame.display.set_caption(window_title)
 
-#Image de fond
-fond = pygame.image.load("images/fond.jpg").convert()
+# Background image
+background = pygame.image.load("images/fond.jpg").convert()
 
 # Loading the sprite of the caracter
 Chara = pygame.image.load("images/mc_droite.png").convert_alpha()
 
 # Apply the background in the window
-window.blit(fond, (0, 0))
+window.blit(background, (0, 0))
 
 # Apply the caracter in the window
 window.blit(Chara, (0, 0))
@@ -49,7 +49,7 @@ level = Level("n1.txt")
 mc = Perso("images/mc_droite.png", "images/mc_gauche.png" , "images/mc_haut.png", "images/mc_bas.png", level)
 
 # State of the game. 1 = running, 0 = closed
-continuer_jeu = 1
+continue_game = 1
 
 # Set for de movements of the character
 pygame.key.set_repeat(5, 5)
@@ -86,27 +86,25 @@ key_ = police.render("Clef", 1, (255, 255, 255))
 swo_ = police.render("Epée", 1, (255, 255, 255))
 
 
-#BOUCLE INFINIE
+# GAME LOOP
 
-while continuer_jeu:
+while continue_game:
 
-	#Limitation de vitesse de la boucle
-	pygame.time.Clock().tick(25)
+	# Speed limitation of the loop
+	pygame.time.Clock().tick(30)
 
 	for event in pygame.event.get():
 
-		#Si l'utilisateur quitte, on met la variable qui continue le jeu
-		#ET la variable générale à 0 pour fermer la fenêtre
+		# If the user leaves, we put the variable that continues the game to 0
+	
 		if event.type == QUIT:
-			continuer_jeu = 0
-			continuer = 0
-
-		elif event.type == KEYDOWN:
-			#Si l'utilisateur presse Echap ici, on revient seulement au menu
+			continue_game = 0
+		
 			if event.key == K_ESCAPE:
-				continuer_jeu = 0
+				continue_game = 0
 
-			#Touches de déplacement de Mac
+			# Mac move keys
+				
 			elif event.key == K_RIGHT:
 				mc.deplacer('droite')
 			elif event.key == K_LEFT:
@@ -116,7 +114,7 @@ while continuer_jeu:
 			elif event.key == K_DOWN:
 				mc.deplacer('bas')
 
-	window.blit(fond, (0, 0))
+	window.blit(background, (0, 0))
 	window.blit(mc.direction, (mc.x, mc.y))
 	level.Show(window)				
 
@@ -156,17 +154,17 @@ while continuer_jeu:
 			time.sleep(3)
 			if event.type == KEYDOWN:
 				if event.key == K_RETURN:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_ESCAPE:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_DOWN:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_UP:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_LEFT:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_RIGHT:
-					continuer_jeu = 0
+					continue_game = 0
 
 		if Keyinv == 0:
 			window.blit(Gameover, (100, 100))
@@ -174,46 +172,46 @@ while continuer_jeu:
 			time.sleep(3)
 			if event.type == KEYDOWN:
 				if event.key == K_RETURN:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_ESCAPE:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_DOWN:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_UP:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_LEFT:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_RIGHT:
-					continuer_jeu = 0
+					continue_game = 0
 
 		if Sworinv == 0:
-			fenetre.blit(Gameover, (100, 100))
+			window.blit(Gameover, (100, 100))
 			pygame.display.flip()
 			time.sleep(3)
 			if event.type == KEYDOWN:
 				if event.key == K_RETURN:
-					continuer_jeu = 0
-				if event.key == K_ESCAPE:
-					continuer_jeu = 0
+					continue_game = 0
+				elif event.key == K_ESCAPE:
+					continue_game = 0
 				elif event.key == K_DOWN:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_UP:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_LEFT:
-					continuer_jeu = 0
+					continue_game = 0
 				elif event.key == K_RIGHT:
-					continuer_jeu = 0
+					continue_game = 0
 
 		# If the play collect every items at the end of maze then he Win
 		if Potinv == 1 and Keyinv == 1 and Sworinv == 1:
 			pygame.time.Clock().tick(3000)
-			window.blit(Win, (100, 100))
+			window.blit(Win, (50, 100))
 			pygame.display.flip()
 			if event.key == K_RETURN:
-				continuer_jeu = 0
+				continue_game = 0
 			else:
 				time.sleep(3)
-				continuer_jeu = 0
+				continue_game = 0
 
 	""" If the position of the player is the same of one of the items,
 	then increase the var correspunding """
@@ -227,17 +225,5 @@ while continuer_jeu:
 		Sworinv = 1
 
 
-##	#Affichages aux nouvelles positions
-##	window.blit(fond, (0,0))
-##	level.Show(window)
-##	window.blit(mc.direction, (mc.x, mc.y)) #mc.direction = l'image dans la bonne direction
-##	pygame.display.flip()
-##
-##
-##
-##	#Victoire -> Retour à l'accueil
-##	if level.structure[mc.case_y][mc.case_x] == 'a':
-##		continuer_jeu = 0
-		
 
 
