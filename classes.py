@@ -39,7 +39,7 @@ class Level:
 	def Show(self, Window):
 		"""Method which shows the maze on the screen"""
 		Wall = pygame.image.load(image_wall).convert()
-		Escape = pygame.image.load(image_arrivee).convert()
+		Escape = pygame.image.load(image_arrival).convert()
 
 		# Read the entire structure
 		num_ligne = 0
@@ -48,8 +48,8 @@ class Level:
 			num_case = 0
 			for sprite in line:
 				# Calculate the real position of the sprite
-				x = num_case * taille_sprite
-				y = num_ligne * taille_sprite
+				x = num_case * size_sprite
+				y = num_ligne * size_sprite
 				if sprite == 'm':  # m = Wall
 					Window.blit(Wall, (x, y))
 				elif sprite == "a":  # a = Exit of the maze
@@ -60,61 +60,61 @@ class Level:
 	
 class Perso:
 	"""Classe permettant de créer un personnage"""
-	def __init__(self, droite, gauche, haut, bas, level):
-		#Sprites du personnage
-		self.droite = pygame.image.load(droite).convert_alpha()
-		self.gauche = pygame.image.load(gauche).convert_alpha()
-		self.haut = pygame.image.load(haut).convert_alpha()
-		self.bas = pygame.image.load(bas).convert_alpha()
-		#Position du personnage en cases et en pixels
+	def __init__(self, right, left, up, down, level):
+		# Sprites of the character
+		self.right = pygame.image.load (right) .convert_alpha ()
+		self.left = pygame.image.load (left) .convert_alpha ()
+		self.up = pygame.image.load (up) .convert_alpha ()
+		self.down = pygame.image.load (down) .convert_alpha ()
+		# Position of the character in boxes and pixels
 		self.case_x = 0
 		self.case_y = 0
 		self.x = 0
 		self.y = 0
-		#Direction par défaut
-		self.direction = self.droite
-		#Niveau dans lequel le personnage se trouve 
+		# Default direction
+		self.direction = self.right
+		# Level in which the character is
 		self.level = level
 		
 	def deplacer(self, direction):
 		"""Methode permettant de déplacer le personnage"""
 		
 		#Déplacement vers la droite
-		if direction == 'droite':
+		if direction == 'right':
 			#Pour ne pas dépasser l'écran
-			if self.case_x < (nombre_sprite_cote - 1):
+			if self.case_x < (number_sprite_cote - 1):
 				#On vérifie que la case de destination n'est pas un mur
 				if self.level.structure[self.case_y][self.case_x+1] != 'm':
 					#Déplacement d'une case
 					self.case_x += 1
 					#Calcul de la position "réelle" en pixel
-					self.x = self.case_x * taille_sprite
+					self.x = self.case_x * size_sprite
 			#Image dans la bonne direction
-			self.direction = self.droite
+			self.direction = self.right
 		
 		#Déplacement vers la gauche
-		if direction == 'gauche':
+		if direction == 'left':
 			if self.case_x > 0:
 				if self.level.structure[self.case_y][self.case_x-1] != 'm':
 					self.case_x -= 1
-					self.x = self.case_x * taille_sprite
-			self.direction = self.gauche
+					self.x = self.case_x * size_sprite
+			self.direction = self.left
 		
 		#Déplacement vers le haut
-		if direction == 'haut':
+		if direction == 'up':
 			if self.case_y > 0:
 				if self.level.structure[self.case_y-1][self.case_x] != 'm':
 					self.case_y -= 1
-					self.y = self.case_y * taille_sprite
-			self.direction = self.haut
+					self.y = self.case_y * size_sprite
+			self.direction = self.up
 		
 		#Déplacement vers le bas
-		if direction == 'bas':
-			if self.case_y < (nombre_sprite_cote - 1):
+		if direction == 'down':
+			if self.case_y < (number_sprite_cote - 1):
 				if self.level.structure[self.case_y+1][self.case_x] != 'm':
 					self.case_y += 1
-					self.y = self.case_y * taille_sprite
-			self.direction = self.bas
+					self.y = self.case_y * size_sprite
+			self.direction = self.down
 
 
 # Class to create one of the items
@@ -128,8 +128,8 @@ class Potion:
         # Initial settings for the item
         self.level = level
         self.case_x, self.case_y = self.randpos()
-        self.x = self.case_x * taille_sprite
-        self.y = self.case_y * taille_sprite
+        self.x = self.case_x * size_sprite
+        self.y = self.case_y * size_sprite
 
 
     # Method that calculate a random pos to pop the item
@@ -173,8 +173,8 @@ class Key:
         self.obj = pygame.image.load(obj).convert_alpha
         self.level = level
         self.case_x, self.case_y = self.randpos()
-        self.x = self.case_x * taille_sprite
-        self.y = self.case_y * taille_sprite
+        self.x = self.case_x * size_sprite
+        self.y = self.case_y * size_sprite
 
     def randpos(self):
         count_max = 1
@@ -201,8 +201,8 @@ class Sword:
         self.obj = pygame.image.load(obj).convert_alpha
         self.level = level
         self.case_x, self.case_y = self.randpos()
-        self.x = self.case_x * taille_sprite
-        self.y = self.case_y * taille_sprite
+        self.x = self.case_x * size_sprite
+        self.y = self.case_y * size_sprite
 
     def randpos(self):
         count_max = 1

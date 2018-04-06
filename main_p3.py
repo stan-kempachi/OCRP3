@@ -99,20 +99,21 @@ while continue_game:
 	
 		if event.type == QUIT:
 			continue_game = 0
-		
+		elif event.type == KEYDOWN:
+			#Si l'utilisateur presse Echap ici, on revient seulement au menu
 			if event.key == K_ESCAPE:
 				continue_game = 0
 
 			# Mac move keys
 				
 			elif event.key == K_RIGHT:
-				mc.deplacer('droite')
+				mc.deplacer('right')
 			elif event.key == K_LEFT:
-				mc.deplacer('gauche')
+				mc.deplacer('left')
 			elif event.key == K_UP:
-				mc.deplacer('haut')
+				mc.deplacer('up')
 			elif event.key == K_DOWN:
-				mc.deplacer('bas')
+				mc.deplacer('down')
 
 	window.blit(background, (0, 0))
 	window.blit(mc.direction, (mc.x, mc.y))
@@ -205,7 +206,7 @@ while continue_game:
 		# If the play collect every items at the end of maze then he Win
 		if Potinv == 1 and Keyinv == 1 and Sworinv == 1:
 			pygame.time.Clock().tick(3000)
-			window.blit(Win, (50, 100))
+			window.blit(Win, (100, 100))
 			pygame.display.flip()
 			if event.key == K_RETURN:
 				continue_game = 0
