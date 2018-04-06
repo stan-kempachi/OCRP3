@@ -12,28 +12,26 @@ from constantes import *
 import time
 
 
-#Paramètres de la fenêtre
-nombre_sprite_cote = 15
-taille_sprite = 30
-cote_fenetre = nombre_sprite_cote * taille_sprite
+# Window settings
+number_sprite_cote = 15
+size_sprite = 30
+dimension_window = number_sprite_cote * size_sprite
 
-#Personnalisation de la fenêtre
-titre_fenetre = "Mac Gyver Escapes"
+# Personalization of the window
+window_title = "Mac Gyver Escapes"
 image_icone = "images/mc_droite.png"
 
 # Levels of the game
 levelGame1 = "n1"
-levelGame2 = "n2"
 
 # Font choosen for the txt ingame
 police = pygame.font.Font("C:/Python/Lib/site-packages/pygame/freesansbold.ttf", 17, bold = True)
 
-#Listes des images du jeu
-image_accueil = "images/accueil.jpg"
-image_fond = "images/fond.jpg"
+# Lists of the game's images
+image_background = "images/fond.jpg"
 image_wall = "images/wall.png"
-image_depart = "images/depart.png"
-image_arrivee = "images/gardien.png"
+image_start = "images/depart.png"
+image_arrival = "images/gardien.png"
 
 
 
