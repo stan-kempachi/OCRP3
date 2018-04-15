@@ -1,38 +1,24 @@
 """Constantes du jeu de Mac Gyver escape"""
 
-# -*-coding:Latin-1 -*
-
 import pygame
 pygame.font.init()
-from pygame.locals import *
 
-from classes import *
-from constantes import *
-
-import time
-
+# -*-coding:Latin-1 -*
 
 # Window settings
-number_sprite_cote = 15
-size_sprite = 30
-dimension_window = number_sprite_cote * size_sprite
+NUMBER_SPRITE_COTE = 15
+SIZE_SPRITE = 30
+DIMENSION_WINDOW = NUMBER_SPRITE_COTE * SIZE_SPRITE
 
 # Personalization of the window
-window_title = "Mac Gyver Escapes"
-image_icone = "images/mc_droite.png"
-
-# Levels of the game
-levelGame1 = "n1"
+WINDOW_TITLE = "Mac Gyver Escapes"
+IMAGE_ICONE = "images/mc_droite.png"
 
 # Font choosen for the txt ingame
-police = pygame.font.Font("../OCRP3/freesansbold.ttf", 17, bold = True)
+POLICE = pygame.font.Font("../OCRP3/freesansbold.ttf", 17, bold=True)
 
 # Lists of the game's images
-image_background = "images/fond.jpg"
-image_wall = "images/wall.png"
-image_start = "images/depart.png"
-image_arrival = "images/gardien.png"
-
-
-
-
+IMAGE_BACKGROUND = "images/fond.jpg"
+IMAGE_WALL = "images/wall.png"
+IMAGE_START = "images/depart.png"
+IMAGE_ARRIVAL = "images/gardien.png"
