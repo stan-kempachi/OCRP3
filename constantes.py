@@ -25,7 +25,7 @@ image_icone = "images/mc_droite.png"
 levelGame1 = "n1"
 
 # Font choosen for the txt ingame
-police = pygame.font.Font("C:/Python/Lib/site-packages/pygame/freesansbold.ttf", 17, bold = True)
+police = pygame.font.Font("../OCRP3/freesansbold.ttf", 17, bold = True)
 
 # Lists of the game's images
 image_background = "images/fond.jpg"
