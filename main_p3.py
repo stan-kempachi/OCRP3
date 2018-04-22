@@ -87,12 +87,12 @@ KEY_ = POLICE.render("Clef", 1, (255, 255, 255))
 SWO_ = POLICE.render("Epée", 1, (255, 255, 255))
 
 
-# GAME LOOP
+# MAIN LOOP
 
 while CONTINUE_GAME:
 
     # Speed limitation of the loop
-    pygame.time.Clock().tick(30)
+    pygame.time.Clock().tick(20)
 
     for event in pygame.event.get():
 

@@ -1,6 +1,6 @@
-"""Classes du jeu de :Mac Gyver escape"""
-
 # -*-coding:Latin-1 -*
+
+"""Classes of the game: Mac Gyver escape"""
 
 import pygame
 from pygame.locals import *
@@ -62,7 +62,7 @@ class Level:
 
 
 class Perso:
-    """Classe permettant de créer un personnage
+    """Classe permettant de cr�er un personnage
 	"""
     def __init__(self, right, left, up, down, level):
         # Sprites of the character
@@ -81,23 +81,23 @@ class Perso:
         self.level = level
 
     def deplacer(self, direction):
-        """Methode permettant de déplacer le personnage
+        """Methode permettant de d�placer le personnage
 		"""
 
-        #Déplacement vers la droite
+        # Move to the right
         if direction == 'right':
-            #Pour ne pas dépasser l'écran
+            # Not to exceed the screen
             if self.case_x < (NUMBER_SPRITE_COTE - 1):
-                #On vérifie que la case de destination n'est pas un mur
+                # We check that the destination sprite is not a wall
                 if self.level.structure[self.case_y][self.case_x+1] != 'm':
-                    #Déplacement d'une case
+                    # Moving a sprit
                     self.case_x += 1
-                    #Calcul de la position "réelle" en pixel
+                    # Calculation of the "real" position in pixels
                     self.x = self.case_x * SIZE_SPRITE
-            #Image dans la bonne direction
+            # Image in the right direction
             self.direction = self.right
 
-        #Déplacement vers la gauche
+        # Moving to the left
         if direction == 'left':
             if self.case_x > 0:
                 if self.level.structure[self.case_y][self.case_x-1] != 'm':
@@ -105,7 +105,7 @@ class Perso:
                     self.x = self.case_x * SIZE_SPRITE
             self.direction = self.left
 
-        #Déplacement vers le haut
+        # Move up
         if direction == 'up':
             if self.case_y > 0:
                 if self.level.structure[self.case_y-1][self.case_x] != 'm':
@@ -113,7 +113,7 @@ class Perso:
                     self.y = self.case_y * SIZE_SPRITE
             self.direction = self.up
 
-        #Déplacement vers le bas
+        # Move down
         if direction == 'down':
             if self.case_y < (NUMBER_SPRITE_COTE - 1):
                 if self.level.structure[self.case_y+1][self.case_x] != 'm':
@@ -169,7 +169,7 @@ class Potion:
 
 
         # Display the item on screen
-        c_potion.set_colorkey((255, 255, 255))#Rend le blanc de l'image transparent"
+        c_potion.set_colorkey((255, 255, 255))# Makes the white of the image transparent"
         window.blit(c_potion, (self.x, self.y))
         # Refresh the window the display the background and the character
         pygame.display.flip()
@@ -200,7 +200,6 @@ class Key:
 
     def display(self, window):
         c_key = pygame.image.load("images/key.png").convert()
-        #Rend le blanc de l'image transparent
         c_key.set_colorkey((255, 255, 255))
         window.blit(c_key, (self.x, self.y))
 
@@ -230,5 +229,5 @@ class Sword:
 
     def display(self, window):
         c_sword = pygame.image.load("images/sword.png").convert()
-        c_sword.set_colorkey((255, 255, 255))#Rend le blanc de l'image transparent"
+        c_sword.set_colorkey((255, 255, 255))
         window.blit(c_sword, (self.x, self.y))
