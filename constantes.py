@@ -1,5 +1,8 @@
 # -*-coding:Latin-1 -*
 
+import pygame
+pygame.font.init()
+
 """Constantes du jeu de Mac Gyver escape"""
 
 # Window settings
