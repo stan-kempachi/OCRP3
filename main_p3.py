@@ -42,6 +42,9 @@ WINDOW.blit(CHARA, (0, 0))
 # Refresh the window the display the background and the character
 pygame.display.flip()
 
+# Refresh the window the display the background and the character
+pygame.display.flip()
+
 # Create an instance of the Level
 LEVEL = Level("n1.txt")
 
@@ -54,9 +57,6 @@ CONTINUE_GAME = 1
 
 # Set for de movements of the character
 pygame.key.set_repeat(5, 5)
-
-# Refresh the window the display the background and the character
-pygame.display.flip()
 
 # Loading of the gameover's image
 GAMEOVER = pygame.image.load("images/gameove.png").convert_alpha()
@@ -101,7 +101,7 @@ while CONTINUE_GAME:
         if event.type == QUIT:
             CONTINUE_GAME = 0
         elif event.type == KEYDOWN:
-            #Si l'utilisateur presse Echap ici, on revient seulement au menu
+           
             if event.key == K_ESCAPE:
                 CONTINUE_GAME = 0
 

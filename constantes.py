@@ -1,9 +1,6 @@
-"""Constantes du jeu de Mac Gyver escape"""
-
-import pygame
-pygame.font.init()
-
 # -*-coding:Latin-1 -*
+
+"""Constantes du jeu de Mac Gyver escape"""
 
 # Window settings
 NUMBER_SPRITE_COTE = 15
